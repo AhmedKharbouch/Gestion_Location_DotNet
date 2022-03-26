@@ -1,0 +1,37 @@
+﻿@model IEnumerable<prototype3._0.Models.Categories>
+
+@{
+    ViewBag.Title = "Index Cat";
+}
+<a class="lead text-muted mb-3 text-decoration-none" style="font-size:xx-large" href="~/carrent/Index">CARRENT</a>
+<div class="form-group text-center">
+    <h2>CATEGORIES LIST</h2>
+</div>
+<hr />
+
+<table class="table table-hover">
+    <tr class="table-dark">
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td class="text-sm-end">
+                
+                @Html.ActionLink("Delete", "Supprimer_categorie", new { id = item.Cat_ID } , new { @class = "btn btn-outline-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="form-group mt-3 text-center">
+    @Html.ActionLink("Accueil", "Index","" , new { @class = "btn btn-outline-primary" }) @Html.ActionLink("New Categories", "Create_categories" ,"",new { @class = "btn btn-outline-primary" })
+
+</div>

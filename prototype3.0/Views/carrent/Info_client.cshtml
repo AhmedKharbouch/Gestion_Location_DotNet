@@ -1,0 +1,88 @@
+﻿@model prototype3._0.Models.Client
+
+@{
+    ViewBag.Title = "Info client";
+}
+<a class="lead text-muted mb-3 text-decoration-none" style="font-size:xx-large" href="~/carrent/Index">CARRENT</a>
+<div class="form-group text-center col-12 col-md-7 offset-md-3 col-lg-8 offset-lg-2">
+    <h2>DETAILS ABOUT CLIENT</h2>
+</div>
+
+<hr />
+<div class="d-flex justify-content-center align-items-center container ">
+    <div class="row col-11 col-md-7 offset-md-1 col-lg-5 offset-lg-0">
+        <img class="rounded mx-auto d-block" style="border-top-left-radius:2%" width="50%" src="~/Images/@Html.DisplayFor(model => model.Image)">
+    </div>
+</div>
+<div class="d-flex justify-content-center align-items-center container ">
+    <div class="row col-12 col-md-7 offset-md-2 col-lg-7 offset-lg-4">
+
+        <div class="form-group mt-5">
+            <label>Nom</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nom_c, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <label>E-mail</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AdresseMail, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <label>Telephone</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.numero_tel, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+            </div>
+        </div>
+
+
+        <div class="form-group mt-3">
+            <label>Date Naissance</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateNaissance, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <div class="col-md-10 border-1" style="font-weight:bold ">
+                @if (Model.valider == true)
+                {
+                    <label style="color:limegreen"> Validé</label>
+                }
+                else
+                {
+                    <label style="color:red">Non Validé</label>
+                }
+
+
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <div class="col-md-10 border-1" style="font-weight:bold ">
+                @if (Model.Isadmin == true)
+                {
+                    <label style="color: orange">Admin</label>
+                }
+                else
+                {
+                    <label style="color: orange ">Client</label>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group mt-3 text-center">
+    @Html.ActionLink("Accueil", "Index", "", new { @class = "btn btn-outline-primary" })
+
+</div>
+
+
+

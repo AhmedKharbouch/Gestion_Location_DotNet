@@ -1,0 +1,105 @@
+﻿@model prototype3._0.Models.Location
+
+@{
+    ViewBag.Title = "Modifier_location";
+}
+<a class="lead text-muted mb-3 text-decoration-none" style="font-size:xx-large" href="~/carrent/Index">CARRENT</a>
+<div class="form-group text-center col-12 col-md-7 offset-md-3 col-lg-8 offset-lg-2">
+    <h2>UPDATE LOCATION</h2>
+</div>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    prototype3._0.Models.GCBD db1 = new prototype3._0.Models.GCBD();
+    prototype3._0.Models.Client client = db1.Clients.Find(Model.CID);
+    prototype3._0.Models.Voiture voiture = db1.Voiture.Find(Model.car_ID);
+
+
+    <div class="d-flex justify-content-center align-items-center container ">
+        <div class="row col-11 col-md-7 offset-md-1 col-lg-5 offset-lg-0">
+            <img class="rounded mx-auto d-block" style="border-top-left-radius:2%" width="50%" src="~/Images/@voiture.Image">
+        </div>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.CID)
+    @Html.HiddenFor(model => model.LID)
+    @Html.HiddenFor(model => model.car_ID)
+    @Html.HiddenFor(model => model.type_location)
+    <div class="d-flex justify-content-center align-items-center container ">
+        <div class="row col-12 col-md-7 offset-md-2 col-lg-7 offset-lg-4">
+            <div class="form-group mt-4">
+                <label>Nom du Client</label>
+                <div class="input-group ">
+                    <input type="text" class="form-control" value="@client.Nom_c" readonly="readonly" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Telephone</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" value="@client.numero_tel" readonly="readonly" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label>Matriculation</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" value="@voiture.num_immatri" readonly="readonly" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label>Debut</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.date_debut, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.date_debut, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label>Fin</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.date_fin, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.date_fin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Price</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.prix_location, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.date_fin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                @Html.LabelFor(model => model.Isvalid, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Isvalid)
+                        @Html.ValidationMessageFor(model => model.Isvalid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 mt-4 mb-5">
+                    <input type="submit" value="UPDATE" class="btn btn-warning  " />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="form-group mt-3 text-center">
+    @Html.ActionLink("location", "Index_location", "", new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("Accueil", "Index", "", new { @class = "btn btn-outline-primary" })
+
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

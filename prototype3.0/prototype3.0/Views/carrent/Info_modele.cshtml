@@ -1,0 +1,37 @@
+﻿@model prototype3._0.Models.Modeles
+
+@{
+    ViewBag.Title = "Info_modele";
+}
+<a class="lead text-muted mb-3 text-decoration-none" style="font-size:xx-large" href="~/carrent/Index">CARRENT</a>
+<div class="form-group text-center col-12 col-md-7 offset-md-3 col-lg-8 offset-lg-2">
+    <h2>DETAILS ABOUT MODELES</h2>
+</div>
+
+<hr />
+<div class="d-flex justify-content-center align-items-center container ">
+    <div class="row col-12 col-md-7 offset-md-2 col-lg-7 offset-lg-4">
+
+        <div class="form-group mt-5">
+            <label>Marque</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nom_marque, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+            </div>
+        </div>
+
+        <div class="form-group mt-3 mb-4">
+            <label>Numéro de Serie</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.num_serie, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="form-group mt-3 text-center">
+    @Html.ActionLink("Accueil", "Index", "", new { @class = "btn btn-sm btn-outline-primary" })
+    @Html.ActionLink("Retour", "Index_Model", "", new { @class = "btn btn-sm btn-outline-primary" })
+
+</div>

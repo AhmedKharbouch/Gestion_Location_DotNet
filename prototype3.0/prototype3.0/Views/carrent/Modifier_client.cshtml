@@ -1,0 +1,95 @@
+﻿@model prototype3._0.Models.Client
+
+@{
+    ViewBag.Title = "Modifier client";
+}
+<a class="lead text-muted mb-3 text-decoration-none" style="font-size:xx-large" href="~/carrent/Index">CARRENT</a>
+<div class="form-group text-center col-12 col-md-7 offset-md-3 col-lg-8 offset-lg-2">
+    <h2>UPDATE CLIENT</h2>
+</div>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="d-flex justify-content-center align-items-center container ">
+        <div class="row col-11 col-md-7 offset-md-1 col-lg-5 offset-lg-0">
+            <img class="rounded mx-auto d-block" style="border-top-left-radius:2%" width="50%" src="~/Images/@Html.DisplayFor(model => model.Image)">
+        </div>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.CID)
+    @Html.HiddenFor(model => model.MotDePasse)
+    @Html.HiddenFor(model => model.Image)
+    <div class="d-flex justify-content-center align-items-center container ">
+        <div class="row col-12 col-md-7 offset-md-2 col-lg-7 offset-lg-4">
+            <div class="form-group mt-4">
+                <label>Nom</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nom_c, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Nom_c, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>E-mail</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdresseMail, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.AdresseMail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Telephone</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.numero_tel, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.numero_tel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label>Date Naissance</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateNaissance, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.DateNaissance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                @Html.LabelFor(model => model.valider, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.valider)
+                        @Html.ValidationMessageFor(model => model.valider, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                @Html.LabelFor(model => model.Isadmin, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Isadmin)
+                        @Html.ValidationMessageFor(model => model.Isadmin, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 mt-4 mb-5">
+                    <input type="submit" value="UPDATE" class="btn btn-warning  " />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="form-group mt-3 text-center">
+    @Html.ActionLink("Accueil", "Index", "", new { @class = "btn btn-outline-primary" })
+
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

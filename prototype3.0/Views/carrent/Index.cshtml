@@ -1,0 +1,79 @@
+﻿@model IEnumerable<prototype3._0.Models.Client>
+
+@{
+    ViewBag.Title = "Index";
+}
+<a class="lead text-muted mb-3 text-decoration-none" style="font-size:xx-large" href="~/carrent/Index">CARRENT</a>
+<div class="form-group text-center">
+    <h2>CLIENT LIST</h2>
+</div>
+<hr />
+
+<table class="table table-hover">
+
+    <tr class="table-dark">
+        <th scope="col">
+            Nom Complet
+        </th>
+        <th scope="col">
+            E-mail
+        </th>
+        <th scope="col">
+            Telephone
+        </th>
+         <th scope="col">
+            Date Naissance
+        </th>
+        <th scope="col">
+            Validation
+        </th>
+        <th scope="col">
+            Admin
+        </th>
+        <th></th>
+    </tr>
+
+    <tbody>
+        @foreach (var client in Model)
+        {
+      
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => client.Nom_c)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => client.AdresseMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => client.numero_tel)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => client.DateNaissance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => client.valider)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => client.Isadmin)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Modifier_client", new { id = client.CID }, new { @class = "btn btn-outline-warning btn-sm" })
+                @Html.ActionLink("Details", "Info_client", new { id = client.CID }, new { @class = "btn btn-outline-info btn-sm" })
+                @Html.ActionLink("Delete", "Supprimer_client", new { id = client.CID }, new { @class = "btn btn-outline-danger btn-sm" })
+            </td>
+        </tr>
+          
+
+        }
+
+
+    </tbody>
+</table>
+<div class="form-group mt-3 text-center">
+    @Html.ActionLink("Create New", "Create_client1", "", new { @class = "btn btn-outline-primary" }) @Html.ActionLink("Categories", "Index_Cat", "", new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("CAR", "Index_Car", "", new { @class = "btn btn-outline-primary" }) @Html.ActionLink("Models", "Index_Model", "", new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("Location", "Index_location", "", new { @class = "btn btn-outline-secondary" }) @Html.ActionLink("Logout", "Logout_admin", "", new { @class = "btn btn-outline-danger" })
+
+</div>
+
+

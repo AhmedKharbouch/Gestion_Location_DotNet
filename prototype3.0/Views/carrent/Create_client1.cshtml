@@ -1,0 +1,80 @@
+﻿@model prototype3._0.Models.Client
+
+@{
+    ViewBag.Title = "Create_client1";
+}
+<h1 class="lead text-muted mb-3" style="font-size:xx-large ">CARRENT</h1>
+<div class="form-group text-center col-12 col-md-7 offset-md-3 col-lg-8 offset-lg-2 ">
+    <h2>ADD CLIENT</h2>
+</div>
+<hr />
+<div class="d-flex justify-content-center align-items-center container ">
+    <div class="row col-12 col-md-7 offset-md-2 col-lg-7 offset-lg-4">
+        @using (Html.BeginForm("create_client1", "carrent", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label>Nom Complet</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nom_c, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+            <div class="form-group mt-3 ">
+                <label>E-mail</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdresseMail, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Telephone</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.numero_tel, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Mot De Passe</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MotDePasse, new { htmlAttributes = new { @type = "password", @class = "form-control" } })
+
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Date Naissance</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateNaissance, new { htmlAttributes = new { @type = "date", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DateNaissance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="ImageTemp">Image :</label>
+                <input type="file" name="ImageTemp" id="ImageTemp" class="form-control form-control-file" />
+            </div>
+            <div class="form-group ">
+                <div class="col-md-offset-2 col-md-10 mt-4 mb-3">
+                    <input type="submit" value="Create" class="btn btn-success " />
+                    @Html.ActionLink("Accueil", "Index", "", new { @class = "btn btn-outline-primary" })
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>
+@if (TempData["email"] != null)
+{
+    <label style="color:red">@TempData["email"]</label>
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

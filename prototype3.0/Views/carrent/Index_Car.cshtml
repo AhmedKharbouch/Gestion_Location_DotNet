@@ -1,0 +1,73 @@
+﻿@model IEnumerable<prototype3._0.Models.Voiture>
+
+@{
+    ViewBag.Title = "Index_Car";
+}
+<a class="lead text-muted mb-3 text-decoration-none" style="font-size:xx-large" href="~/carrent/Index">CARRENT</a>
+<div class="form-group text-center">
+    <h2>CAR LIST</h2>
+</div>
+<hr />
+
+<table class="table table-hover">
+    <tr class="table-dark">
+        <th scope="col">
+            Categorie
+        </th>
+        <th scope="col">
+            Marque
+        </th>
+        <th scope="col">
+            Matricule
+        </th>
+        <th scope="col">
+            Circulation
+        </th>
+        <th scope="col">
+            Carburant
+        </th>
+        <th scope="col">
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    prototype3._0.Models.GCBD db1 = new prototype3._0.Models.GCBD();
+                    prototype3._0.Models.Categories var_cat = db1.Categories.Find(item.Cat_ID);
+                    prototype3._0.Models.Modeles var_model = db1.Modeles.Find(item.model_ID);
+                }
+                @Html.DisplayFor(modelItem => var_cat.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => var_model.nom_marque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.num_immatri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.circulation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.carburant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loca_jounalier)
+            </td>
+            <td class="text-sm-end">
+                @Html.ActionLink("Edit", "Modifier_voiture", new { id = item.car_ID }, new { @class = "btn btn-outline-warning btn-sm" })
+                @Html.ActionLink("Details", "Info_car", new { id = item.car_ID }, new { @class = "btn btn-outline-info btn-sm" })
+                @Html.ActionLink("Delete", "Supprimer_voiture", new { id = item.car_ID }, new { @class = "btn btn-outline-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="form-group mt-3 text-center">
+    @Html.ActionLink("Add Car", "Create_voiture", "", new { @class = "btn btn-outline-primary" }) @Html.ActionLink("Accueil", "Index", "", new { @class = "btn btn-outline-primary" })
+
+</div>
